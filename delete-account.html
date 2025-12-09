@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Delete Account - Urban Mart</title>
+  <meta name="description" content="Delete your Urban Mart account and associated data" />
+  <style>
+    body{
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      line-height:1.6;
+      color:#111;
+      background:#f7f8fa;
+      padding:24px;
+      margin:0;
+    }
+    .container{
+      max-width:800px;
+      margin:40px auto;
+      background:#fff;
+      padding:48px;
+      border-radius:12px;
+      box-shadow:0 8px 32px rgba(13,20,30,0.08);
+    }
+    .header{
+      text-align:center;
+      margin-bottom:48px;
+    }
+    .icon-large{
+      font-size:64px;
+      margin-bottom:16px;
+      display:block;
+    }
+    h1{
+      color:#0b2545;
+      font-size:32px;
+      margin:0 0 12px 0;
+      font-weight:600;
+      letter-spacing:-0.5px;
+    }
+    .subtitle{
+      color:#6b7280;
+      font-size:16px;
+      margin:0;
+    }
+    .method-card{
+      background:#fff;
+      border:2px solid #e5e7eb;
+      border-radius:12px;
+      padding:32px;
+      margin:24px 0;
+      transition:all 0.3s ease;
+    }
+    .method-card:hover{
+      border-color:#3b82f6;
+      box-shadow:0 4px 16px rgba(59,130,246,0.1);
+    }
+    .method-card.primary{
+      border-color:#3b82f6;
+      background:linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    }
+    .method-header{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:20px;
+    }
+    .method-icon{
+      font-size:32px;
+    }
+    .method-title{
+      flex:1;
+    }
+    .method-title h2{
+      font-size:22px;
+      color:#0b2545;
+      margin:0 0 4px 0;
+      font-weight:600;
+    }
+    .method-title .label{
+      font-size:13px;
+      color:#6b7280;
+      font-weight:500;
+    }
+    .badge{
+      background:#2563eb;
+      color:white;
+      font-size:11px;
+      padding:4px 12px;
+      border-radius:12px;
+      font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:0.5px;
+    }
+    .steps{
+      margin:20px 0 0 0;
+      padding:0;
+      list-style:none;
+    }
+    .steps li{
+      padding:12px 0 12px 36px;
+      position:relative;
+      color:#374151;
+      font-size:15px;
+    }
+    .steps li:before{
+      content:"";
+      position:absolute;
+      left:8px;
+      top:20px;
+      width:10px;
+      height:10px;
+      background:#3b82f6;
+      border-radius:50%;
+    }
+    .steps li strong{
+      color:#0b2545;
+      font-weight:600;
+    }
+    .completion-time{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      background:#dcfce7;
+      color:#166534;
+      padding:8px 16px;
+      border-radius:8px;
+      font-size:14px;
+      font-weight:600;
+      margin-top:16px;
+    }
+    .contact-section{
+      background:#f9fafb;
+      padding:28px;
+      border-radius:10px;
+      margin-top:20px;
+    }
+    .contact-section h3{
+      font-size:18px;
+      color:#0b2545;
+      margin:0 0 16px 0;
+      font-weight:600;
+    }
+    .contact-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+      gap:16px;
+      margin-top:16px;
+    }
+    .contact-item{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+    .contact-label{
+      font-size:13px;
+      color:#6b7280;
+      font-weight:500;
+    }
+    .contact-value{
+      font-size:15px;
+      color:#0b2545;
+      font-weight:600;
+    }
+    .contact-value a{
+      color:#2563eb;
+      text-decoration:none;
+    }
+    .contact-value a:hover{
+      text-decoration:underline;
+    }
+    .warning-box{
+      background:#fef2f2;
+      border-left:4px solid #ef4444;
+      padding:24px 28px;
+      border-radius:8px;
+      margin:32px 0;
+    }
+    .warning-box h3{
+      color:#dc2626;
+      margin:0 0 12px 0;
+      font-size:18px;
+      font-weight:600;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .warning-box p{
+      color:#374151;
+      margin:8px 0;
+      font-size:15px;
+    }
+    .warning-list{
+      margin:16px 0 0 20px;
+      color:#374151;
+    }
+    .warning-list li{
+      margin:8px 0;
+      font-size:15px;
+    }
+    .note-box{
+      background:#fffbeb;
+      border-left:4px solid #f59e0b;
+      padding:16px 20px;
+      border-radius:8px;
+      margin-top:16px;
+    }
+    .note-box p{
+      margin:0;
+      color:#92400e;
+      font-size:14px;
+    }
+    .note-box strong{
+      color:#78350f;
+    }
+    footer{
+      margin-top:48px;
+      padding-top:24px;
+      border-top:2px solid #e5e7eb;
+      text-align:center;
+    }
+    footer p{
+      color:#6b7280;
+      font-size:14px;
+      margin:8px 0;
+    }
+    footer a{
+      color:#2563eb;
+      text-decoration:none;
+      font-weight:500;
+    }
+    footer a:hover{
+      text-decoration:underline;
+    }
+    .divider{
+      height:1px;
+      background:linear-gradient(to right, transparent, #e5e7eb, transparent);
+      margin:32px 0;
+    }
+    @media(max-width:768px){
+      body{padding:16px}
+      .container{padding:28px 24px;margin:20px auto}
+      h1{font-size:26px}
+      .method-card{padding:24px 20px}
+      .method-header{flex-direction:column;align-items:flex-start}
+      .contact-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <span class="icon-large">🗑️</span>
+      <h1>Delete Your Account</h1>
+      <p class="subtitle">Permanently remove your Urban Mart account and personal data</p>
+    </div>
+
+    <!-- Method 1: In-App Deletion (Primary) -->
+    <div class="method-card primary">
+      <div class="method-header">
+        <span class="method-icon">📱</span>
+        <div class="method-title">
+          <h2>Delete via App</h2>
+          <span class="label">Instant and secure</span>
+        </div>
+        <span class="badge">Recommended</span>
+      </div>
+      
+      <p style="color:#374151;font-size:15px;margin:0 0 20px 0">
+        The quickest way to delete your account is directly through the Urban Mart mobile app:
+      </p>
+
+      <ol class="steps">
+        <li>Open the <strong>Urban Mart app</strong> on your device</li>
+        <li>Tap the <strong>Profile icon</strong> in the bottom navigation bar</li>
+        <li>Scroll down and tap <strong>"Delete Account"</strong></li>
+        <li>Verify your identity via <strong>OTP</strong> sent to your registered phone number</li>
+        <li>Confirm your deletion request</li>
+      </ol>
+
+      <div class="completion-time">
+        <span>✓</span>
+        <span>Account deleted within 7 business days</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Method 2: Contact Support -->
+    <div class="method-card">
+      <div class="method-header">
+        <span class="method-icon">💬</span>
+        <div class="method-title">
+          <h2>Contact Support</h2>
+          <span class="label">If you can't access the app</span>
+        </div>
+      </div>
+
+      <p style="color:#374151;font-size:15px;margin:0 0 20px 0">
+        Don't have access to the app? Reach out to our support team and we'll process your deletion request manually.
+      </p>
+
+      <div class="contact-section">
+        <h3>Get in Touch</h3>
+        <div class="contact-grid">
+          <div class="contact-item">
+            <span class="contact-label">Email</span>
+            <span class="contact-value">
+              <a href="mailto:mobinshaik999@gmail.com?subject=Account Deletion Request">mobinshaik999@gmail.com</a>
+            </span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Phone</span>
+            <span class="contact-value">
+              <a href="tel:+918099660281">+91 80996 60281</a>
+            </span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Support Hours</span>
+            <span class="contact-value">Mon-Sat, 9 AM - 7 PM IST</span>
+          </div>
+        </div>
+
+        <div class="note-box">
+          <p><strong>Note:</strong> Please include your registered phone number in your request for identity verification. We'll respond within 24-48 hours.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Warning Section -->
+    <div class="warning-box">
+      <h3>
+        <span>⚠️</span>
+        <span>Important: Deletion is Permanent</span>
+      </h3>
+      <p>Once your account is deleted, this action <strong>cannot be undone</strong>. You will permanently lose:</p>
+      <ul class="warning-list">
+        <li>Complete order history and receipts</li>
+        <li>All saved delivery addresses</li>
+        <li>Account preferences and settings</li>
+        <li>Any pending or scheduled orders (will be cancelled)</li>
+        <li>Ability to track or reference past purchases</li>
+      </ul>
+      <div class="note-box" style="margin-top:20px">
+        <p><strong>Legal Requirement:</strong> Transaction records may be retained for up to 7 years as required by Indian tax regulations, but will be anonymized and not linked to your identity.</p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p><strong>Having issues with your account?</strong></p>
+      <p>Before deleting, consider reaching out to our support team. We're here to help resolve any concerns you may have.</p>
+      <p style="margin-top:20px">
+        <a href="index.html">← Back to Privacy Policy</a>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
