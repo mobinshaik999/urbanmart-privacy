@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Mart Support Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* App Colors */
+            --white: #FFFFFF;
+            --black: #000000;
+            
+            /* Black tones */
+            --black-primary: #1C1C1E;
+            --black-soft: #2C2C2E;
+            --black-text: #111111;
+            --black-secondary-text: #3A3A3C;
+            --black-border: #2A2A2A;
+            
+            /* Red tones */
+            --light-red-bg: #FFE5E5;
+            --red-soft: #FF9999;
+            --red: #FF4D4D;
+            --red-dark: #CC0000;
+            --red-shadow: rgba(255, 77, 77, 0.2);
+            
+            /* White tones */
+            --white-primary: #FFFFFF;
+            --white-soft: #F9F9F9;
+            --white-text: #FAFAFA;
+            --white-secondary-text: #E5E5E5;
+            --white-border: #DADADA;
+            
+            /* Primary Brand */
+            --primary-green: #5CB85C;
+            --dark-green: #4A9C4A;
+            --light-green-bg: #E8F5E9;
+            --pale-green: #D4EDD4;
+            
+            /* Accent */
+            --accent-orange: #FF9966;
+            --highlight: #FFC107;
+            
+            /* Background & Surface */
+            --background: #EDF5ED;
+            --card-background: #FFFFFF;
+            --light-grey: #F8F8F8;
+            --border-grey: #E0E0E0;
+            --grey-bg: rgba(0, 0, 0, 0.06);
+            
+            /* Text */
+            --black-87: rgba(0, 0, 0, 0.87);
+            --black-54: rgba(0, 0, 0, 0.54);
+            --black-38: rgba(0, 0, 0, 0.38);
+            --text-primary: #2C3E50;
+            --text-secondary: #7F8C8D;
+            
+            /* Status */
+            --success: #5CB85C;
+            --warning: #FF9800;
+            --error: #E74C3C;
+            --info: #5DADE2;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--background);
+            min-height: 100vh;
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header h1 {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+            animation: fadeInDown 0.6s ease-out;
+        }
+
+        .header p {
+            font-size: 18px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.95);
+            animation: fadeInUp 0.6s ease-out 0.2s both;
+        }
+
+        /* Content Section */
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 40px 60px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            animation: fadeInUp 0.6s ease-out 0.4s both;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 28px;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 28px;
+            background: linear-gradient(180deg, var(--primary-green), var(--dark-green));
+            border-radius: 2px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 20px;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, var(--light-green-bg) 0%, var(--pale-green) 100%);
+            border-radius: 12px;
+            padding: 28px;
+            border: 1px solid rgba(92, 184, 92, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(92, 184, 92, 0.15);
+            border-color: var(--primary-green);
+        }
+
+        .contact-card .icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .contact-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark-green);
+            margin-bottom: 10px;
+        }
+
+        .contact-card a {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            display: inline-block;
+            margin-bottom: 8px;
+            transition: color 0.2s;
+        }
+
+        .contact-card a:hover {
+            color: var(--dark-green);
+            text-decoration: underline;
+        }
+
+        .contact-card p {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .help-text {
+            background: var(--light-grey);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 24px;
+            border-left: 3px solid var(--accent-orange);
+        }
+
+        .help-text p {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            animation: fadeInUp 0.6s ease-out 0.6s both;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-grey);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary-green);
+            box-shadow: 0 4px 16px rgba(92, 184, 92, 0.1);
+        }
+
+        .faq-item h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            line-height: 1.4;
+        }
+
+        .faq-item h3::before {
+            content: "Q";
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: var(--white);
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .faq-item p {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            padding-left: 44px;
+        }
+
+        .faq-item strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* Important Notice */
+        .important-notice {
+            background: linear-gradient(135deg, #FFF5E6 0%, #FFE8CC 100%);
+            border-radius: 12px;
+            padding: 28px;
+            margin-top: 40px;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            animation: fadeInUp 0.6s ease-out 0.8s both;
+        }
+
+        .important-notice h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #E67E22;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .important-notice p {
+            font-size: 15px;
+            font-weight: 500;
+            color: #8B5A2B;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--white);
+            padding: 32px 40px;
+            text-align: center;
+            border-top: 1px solid var(--border-grey);
+            margin-top: 40px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                padding: 40px 24px;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .header p {
+                font-size: 16px;
+            }
+
+            .content {
+                padding: 24px 24px 40px;
+            }
+
+            .contact-section {
+                padding: 28px 24px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .faq-item {
+                padding: 24px 20px;
+            }
+
+            .faq-item h3 {
+                font-size: 16px;
+            }
+
+            .faq-item p {
+                font-size: 14px;
+                padding-left: 0;
+                margin-top: 8px;
+            }
+
+            .footer {
+                padding: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .contact-card {
+                padding: 24px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <h1>Urban Mart Support Center</h1>
+                <p>Your dedicated help center for orders, account management, and customer service</p>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <!-- Contact Section -->
+            <div class="contact-section">
+                <h2 class="section-title">Get in Touch</h2>
+                
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <span class="icon">📞</span>
+                        <h3>Phone Support</h3>
+                        <a href="tel:9966566960">9966566960</a>
+                        <p>Call us for immediate assistance with urgent orders or delivery issues</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <span class="icon">📧</span>
+                        <h3>Email Support</h3>
+                        <a href="mailto:customercare.urbanmart@gmail.com">customercare.urbanmart@gmail.com</a>
+                        <p>Send us your queries, feedback, and non-urgent support requests</p>
+                    </div>
+                </div>
+
+                <div class="help-text">
+                    <p>💚 We're here to help with orders, refunds, account issues, or any general queries you may have. Our support team is available <strong>Monday to Saturday, 9 AM - 7 PM IST</strong>.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+
+                <div class="faq-item">
+                    <h3>How do I place an order?</h3>
+                    <p>Browse our wide selection of fresh products in the app, add your desired items to the cart, select a convenient delivery time slot, and confirm your order. We'll deliver fresh products right to your doorstep at your chosen time.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Can I cancel or return an order?</h3>
+                    <p>Orders can be canceled only before the packing process begins. For your protection, returns or refunds are accepted exclusively for damaged, defective, or spoiled products. Please inspect your delivery upon arrival and contact us immediately if there are any quality concerns.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How do I reset my password or access my account?</h3>
+                    <p>Use the mobile OTP (One-Time Password) login option available in the app for secure, password-free access. If you experience any login difficulties, our support team is ready to assist you via phone or email.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Where do you deliver?</h3>
+                    <p>We currently serve Guntur, Andhra Pradesh with fresh vegetables, groceries, batters, and daily essentials. We use location verification to confirm service availability in your area. If you're within our delivery zone, you'll see available delivery slots when placing your order.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How is my personal data used and protected?</h3>
+                    <p>Your privacy is our priority. We use your phone number for login and delivery coordination, location data to verify service availability in your area, and optional information (name, email) to enhance your experience. All data is securely stored and encrypted, and can be deleted upon request. We never share your personal information with third parties.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How do I delete my account?</h3>
+                    <p>You can delete your account directly through the Urban Mart app in just a few steps. Go to your Profile, tap "Delete Account", verify your identity via OTP, and confirm. Your account will be deleted within 7 business days. For detailed instructions and alternative methods, visit our <a href="https://mobinshaik999.github.io/urbanmart-privacy/delete-account.html" target="_blank" style="color: var(--primary-green); font-weight: 600;">Account Deletion page</a>.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>What about refunds and returns?</h3>
+                    <p>Due to the perishable nature of our products, we don't accept general returns. However, we will gladly provide refunds or replacements for damaged, spoiled, incorrect, or missing items. Please report any issues within 2 hours of delivery with clear photos, and we'll review your case. Your satisfaction is important to us!</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>What payment methods do you accept?</h3>
+                    <p>We currently accept Cash on Delivery (COD) only. Online payment options will be introduced in future updates. When available, we'll use secure, PCI-DSS compliant payment gateways to protect your financial information.</p>
+                </div>
+            </div>
+
+            <!-- Important Notice -->
+            <div class="important-notice">
+                <h3>⚠️ Important Information</h3>
+                <p>For the fastest resolution of urgent issues like delivery problems or order concerns, please call us directly. For account management, general inquiries, or detailed questions, email works best. We typically respond to emails within 24-48 hours during business days. Need more info? Check out our full <a href="https://mobinshaik999.github.io/urbanmart-privacy/" target="_blank" style="color: #E67E22; font-weight: 600; text-decoration: underline;">Privacy Policy</a>.</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2024 Urban Mart. All rights reserved. | Committed to fresh products and excellent service.</p>
+        </div>
+    </div>
+</body>
+</html>
